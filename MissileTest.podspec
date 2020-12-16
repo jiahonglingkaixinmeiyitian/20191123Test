@@ -17,6 +17,7 @@ Pod::Spec.new do |spec|
 
   spec.name         = "MissileTest"
   spec.version      = "0.0.2"
+  #要写
   spec.summary      = "测试看看."
 
   # This description is used to generate tags and improve search results.
@@ -65,10 +66,12 @@ Pod::Spec.new do |spec|
   #
 
   # spec.platform     = :ios
-   spec.platform     = :ios, "9.0"(要有)（1）
+#(要有)（1）
+   spec.platform     = :ios, "9.0"
 #（1）和（2）必须有一个
   #  When using multiple platforms
-  # spec.ios.deployment_target = "5.0"(或者有这个也行)（2）
+#(或者有这个也行)（2）
+  # spec.ios.deployment_target = "5.0"
   # spec.osx.deployment_target = "10.7"
   # spec.watchos.deployment_target = "2.0"
   # spec.tvos.deployment_target = "9.0"
