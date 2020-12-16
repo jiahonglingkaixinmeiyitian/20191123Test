@@ -65,10 +65,10 @@ Pod::Spec.new do |spec|
   #
 
   # spec.platform     = :ios
-   spec.platform     = :ios, "9.0"
-
+   spec.platform     = :ios, "9.0"(要有)（1）
+#（1）和（2）必须有一个
   #  When using multiple platforms
-  # spec.ios.deployment_target = "5.0"
+  # spec.ios.deployment_target = "5.0"(或者有这个也行)（2）
   # spec.osx.deployment_target = "10.7"
   # spec.watchos.deployment_target = "2.0"
   # spec.tvos.deployment_target = "9.0"
