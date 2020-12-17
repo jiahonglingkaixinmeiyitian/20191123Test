@@ -1,0 +1,172 @@
+
+创建本地索引私有库(其他同事或者小伙伴，在自己的电脑执行一下同样的命名进行安装自定义索引库)
+终端执行：
+pod repo add HLSpecs https://gitee.com/private_code_base/HLSpecs.git
+
+使用：podfile中加入
+source 'https://github.com/CocoaPods/Specs.git'
+source 'https://gitee.com/private_code_base/HLSpecs.git'
+
+pod repo push ZYSPECS ZYLIB.podspec。
+
+Podspec 
+
+1.创建.podspec 
+pod spec create NSFileManager
+
+
+2.编辑.podspec
+
+
+3.将自己的项目打成tag
+//为git打tag, 第一次需要在前面加一个v
+git tag "v1.0.0" 
+//将tag推送到远程仓库
+git push --tags 
+
+
+4.验证
+pod spec lint NSFileManager.podspec --verbose（有错误会打印信息）或者 pod spec lint 
+或者：pod spec lint --verbose --allow-warnings
+验证报错 执行pod spec lint --allow-warnings --use-libraries
+
+或者
+pod spec lint iCocos.podspec –allow-warnings (忽略警告)
+
+
+5.注册CocoaPods
+pod trunk register 2858796570@163.com “jhl” --verbose
+
+
+6.发布
+pod trunk push NSFileManager.podspec 
+或者pod trunk push
+
+pod trunk push iCocos.podspec --allow-warnings (忽略警告)
+
+可使用* pod trunk delete CSSwiftExtension 0.0.1 * 来删除该提交. 
+
+提交
+git add .
+git commit -m"改动的内容"
+git push/git push origin master
+
+给项目打tag
+git tag '1.0.1' //git tag -a '0.0.1'  -m '描述'//添加tag; git tag //查看tag
+git push --tags 
+
+
+先删除tag
+// 删除本地tag
+git tag -d 1.0.0
+// 删除远程tag
+git push origin -d tag 1.0.0
+
+1.创建文件：pod lib create iHtrasitionAnimation (起的名字)，会创建一个工程，并自动打开
+2.git init初始化git仓库
+git status//查看状态
+
+3.git remote add origin https://github.com/jiahonglingkaixinmeiyitian/20191123Test.git 关联远程仓库
+
+本地Git仓库与远程仓库关联的方法
+https://blog.csdn.net/weixin_34014555/article/details/91393902
+
+
+git add .
+git commit -m "初始化工程"
+git remote add origin http://gitlab.**/appframework-ios.git
+git push origin master -f(加f远程仓库中的东西会被删除)
+git tag 0.4.0 （注：这里的版本号必须和podspec里写的版本号一致）
+git push --tags
+
+拉去：git pull origin master
+报错后：git pull origin master --allow-unrelated-histories
+
+使用：https://www.jianshu.com/p/103a6f0bf3a4
+source 'https://github.com/CocoaPods/Specs.git'
+source 'https://gitee.com/private_code_base/HLSpecs.git'
+
+
+https://www.jianshu.com/p/f9731bf970f3
+创建本地仓库：pod lib create 文件名字，比如：AFNetworking
+
+
+https://www.cnblogs.com/anywherego/p/11149609.html
+https://icocos.github.io/2017/10/25/iOS——CocoaPods私有化组件/
+
+https://www.jianshu.com/p/047e0948f891?appinstall=0
+
+
+创建私有库步骤
+1. 创建podspec文件
+2. 编辑podspec文件
+3. 验证podspec文件
+4. 本地调用验证
+5. 将podspec文件推送到远程仓库
+
+
+
+第一种方式
+在git上创建私有仓库，至少创建两个，一次存放pod的配置文件podspec，一个存放私有代码如存放AFNetworking
+
+//HLSpecs为存放pod的配置文件podspec，终端执行
+$ pod repo add HLSpecs https://gitee.com/private_code_base/HLSpecs.git
+添加后可以在本地查看是否添加成功。
+$ pod repo list
+本地仓库可以做删除和更新等操作
+$ pod repo remove REPO_NAME
+$ pod repo update
+
+Clone仓库到本地，cd到仓库中
+git clone https://github.com/jiahonglingkaixinmeiyitian/TCPNetworking.git
+1.生成pod库配置文件
+pod spec create TCPNetworking
+2.修改完之后 (每次修改都要重复以下步骤)
+git add .
+git commit -m "第一次上传"
+git push origin master/git push -f origin master//将本地库的代码推到远程库
+
+3.验证
+方式一 （本地校验）
+pod lib lint --allow-warnings
+方式二  （远程校验）
+pod spec lint NSFileManager.podspec --verbose（有错误会打印信息）或者 pod spec lint 
+或者：pod spec lint --verbose --allow-warnings
+验证报错 执行pod spec lint --allow-warnings --use-libraries
+
+4.打tag
+git tag -m "描述" 0.2.0 （注：这里的版本号必须和podspec里写的版本号一致）
+git push --tags
+
+5.添加你的 Podspec 到你的 repo
+pod repo push HLSpecs UPTCPSocket.podspec
+pod repo push HLSpecs UPTCPSocket.podspec --allow-warnings --use-libraries
+
+第二种方式(自动创建)
+1.创建文件：pod lib create iHtrasitionAnimation (起的名字)，会创建一个工程，并自动打开
+2.git init初始化git仓库
+3.git remote add origin https://github.com/jiahonglingkaixinmeiyitian/jhl123.git 关联远程仓库
+
+4.修改完之后 (每次修改都要重复以下步骤)
+git add .
+git commit -m "第一次上传"
+git push origin master/git push origin master -f (加f远程仓库中的东西会被删除)
+
+5.验证
+方式一 （本地校验）
+pod lib lint --allow-warnings
+方式二  （远程校验）
+pod spec lint NSFileManager.podspec --verbose（有错误会打印信息）或者 pod spec lint 
+或者：pod spec lint --verbose --allow-warnings
+验证报错 执行pod spec lint --allow-warnings --use-libraries
+
+6.打tag
+git tag -m "描述" 0.2.0 （注：这里的版本号必须和podspec里写的版本号一致）
+git push --tags
+
+7.添加你的 Podspec 到你的 repo
+pod repo push HLSpecs UPTCPSocket.podspec
+pod repo push HLSpecs UPTCPSocket.podspec --allow-warnings --use-libraries
+
+
+
