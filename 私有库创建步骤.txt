@@ -170,3 +170,6 @@ pod repo push HLSpecs UPTCPSocket.podspec --allow-warnings --use-libraries
 
 
 https://www.jianshu.com/p/9eea3e7cb3a1?utm_campaign=maleskine&utm_content=note&utm_medium=seo_notes&utm_source=recommendation
+
+swift要指定
+s.swift_version = "5.0"
